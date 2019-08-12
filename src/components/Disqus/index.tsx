@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import ReactDisqusComments from "react-disqus-comments";
-import config from "../../../config";
-type DisqusState = {
-  toasts: any,
-  toasts: any,
-  toasts: undefined[]
-};
+import React, { Component } from 'react';
+import ReactDisqusComments from 'react-disqus-comments';
+import config from '../../../config';
+interface DisqusState {
+  toasts: any;
+  toasts: any;
+  toasts: undefined[];
+}
 class Disqus extends Component<{}, DisqusState> {
   constructor(props) {
     super(props);
     this.state = {
-      toasts: []
+      toasts: [],
     };
     this.notifyAboutComment = this.notifyAboutComment.bind(this);
     this.onSnackbarDismiss = this.onSnackbarDismiss.bind(this);
@@ -21,7 +21,7 @@ class Disqus extends Component<{}, DisqusState> {
   }
   notifyAboutComment() {
     const toasts = this.state.toasts.slice();
-    toasts.push({ text: "New comment available!" });
+    toasts.push({ text: 'New comment available!' });
     this.setState({ toasts });
   }
   render() {

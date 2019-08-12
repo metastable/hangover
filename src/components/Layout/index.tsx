@@ -1,13 +1,13 @@
-import React, { Component, Fragment } from "react";
-import Helmet from "react-helmet";
-import "../../assets/sass/styles.sass";
-import config from "../../../config";
-import NavBar from "../NavBar";
-import Footer from "../Footer";
-type LayoutState = {
-  isActive: boolean,
-  isActive: boolean
-};
+import React, { Component, Fragment } from 'react';
+import Helmet from 'react-helmet';
+import '../../assets/scss/styles.scss';
+import config from '../../../config';
+import NavBar from '../NavBar';
+import Footer from '../Footer';
+interface LayoutState {
+  isActive: boolean;
+  isActive: boolean;
+}
 class Layout extends Component<{}, LayoutState> {
   constructor(props) {
     super(props);
@@ -24,10 +24,7 @@ class Layout extends Component<{}, LayoutState> {
           <title>{config.siteTitle}</title>
           <meta name="description" content={config.siteDescription} />
         </Helmet>
-        <NavBar
-          isActive={this.state.isActive}
-          toggleNavbar={() => this.toggleNavbar()}
-        />
+        <NavBar isActive={this.state.isActive} toggleNavbar={() => this.toggleNavbar()} />
         <Fragment>{this.props.children}</Fragment>
         <Footer />
       </Fragment>

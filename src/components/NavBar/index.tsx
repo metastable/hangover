@@ -1,6 +1,6 @@
-import React from "react";
-import { Link, graphql, StaticQuery } from "gatsby";
-import SearchBox from "../SearchBox";
+import React from 'react';
+import { Link, graphql, StaticQuery } from 'gatsby';
+import SearchBox from '../SearchBox';
 const NavBar = ({ toggleNavbar, isActive }) => (
   <StaticQuery
     query={graphql`
@@ -17,7 +17,7 @@ const NavBar = ({ toggleNavbar, isActive }) => (
             <strong>Gatsby Starter Business</strong>
           </Link>
           <button
-            className={`button navbar-burger ${isActive ? "is-active" : ""}`}
+            className={`button navbar-burger ${isActive ? 'is-active' : ''}`}
             data-target="navMenu"
             onClick={toggleNavbar}
           >
@@ -26,10 +26,7 @@ const NavBar = ({ toggleNavbar, isActive }) => (
             <span />
           </button>
         </div>
-        <div
-          className={`navbar-menu ${isActive ? "is-active" : ""}`}
-          id="navMenu"
-        >
+        <div className={`navbar-menu ${isActive ? 'is-active' : ''}`} id="navMenu">
           <div className="navbar-end">
             <SearchBox searchIndex={data.siteSearchIndex.index} />
             <Link className="navbar-item" to="/about">

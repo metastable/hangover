@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   FacebookShareButton,
   GooglePlusShareButton,
@@ -15,24 +15,22 @@ import {
   TelegramIcon,
   GooglePlusIcon,
   LinkedinIcon,
-  RedditIcon
-} from "react-share";
-import config from "../../../config";
-import "./styles.sass";
+  RedditIcon,
+} from 'react-share';
+import config from '../../../config';
+import './styles.scss';
 class Share extends Component<{}, {}> {
   render() {
     const { title, slug, excerpt, mobile } = this.props;
-    const realPrefix = config.pathPrefix === "/" ? "" : config.pathPrefix;
+    const realPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
     const url = config.siteUrl + realPrefix + slug;
     const iconSize = mobile ? 36 : 48;
-    const filter = count => (count > 0 ? count : "");
+    const filter = count => (count > 0 ? count : '');
     return (
       <div className="social-links">
         <RedditShareButton url={url} title={title}>
           <RedditIcon round size={iconSize} />
-          <RedditShareCount url={url}>
-            {count => <div className="share-count">{filter(count)}</div>}
-          </RedditShareCount>
+          <RedditShareCount url={url}>{count => <div className="share-count">{filter(count)}</div>}</RedditShareCount>
         </RedditShareButton>
         <TwitterShareButton url={url} title={title}>
           <TwitterIcon round size={iconSize} />

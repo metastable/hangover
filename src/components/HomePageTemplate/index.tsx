@@ -1,18 +1,18 @@
-import React from "react";
-import Helmet from "react-helmet";
-import Offerings from "../Offerings";
-import Testimonials from "../Testimonials";
-type HomePageTemplateProps = {
-  title?: string,
-  meta_title?: string,
-  meta_description?: string,
-  heading?: string,
-  description?: string,
+import React from 'react';
+import Helmet from 'react-helmet';
+import Offerings from '../Offerings';
+import Testimonials from '../Testimonials';
+interface HomePageTemplateProps {
+  title?: string;
+  meta_title?: string;
+  meta_description?: string;
+  heading?: string;
+  description?: string;
   offerings?: {
-    blurbs?: any[]
-  },
-  testimonials?: any[]
-};
+    blurbs?: any[];
+  };
+  testimonials?: any[];
+}
 const HomePageTemplate: React.SFC<HomePageTemplateProps> = ({
   title,
   heading,
@@ -20,7 +20,7 @@ const HomePageTemplate: React.SFC<HomePageTemplateProps> = ({
   offerings,
   meta_title,
   meta_description,
-  testimonials
+  testimonials,
 }) => (
   <div>
     <Helmet>
@@ -47,15 +47,11 @@ const HomePageTemplate: React.SFC<HomePageTemplateProps> = ({
             <div className="column is-10 is-offset-1">
               <div className="content">
                 <div>
-                  <h3 className="has-text-weight-semibold is-size-2">
-                    {heading}
-                  </h3>
+                  <h3 className="has-text-weight-semibold is-size-2">{heading}</h3>
                   <p>{description}</p>
                 </div>
                 <Offerings gridItems={offerings.blurbs} />
-                <h2 className="has-text-weight-semibold is-size-2">
-                  Testimonials
-                </h2>
+                <h2 className="has-text-weight-semibold is-size-2">Testimonials</h2>
                 <Testimonials testimonials={testimonials} />
               </div>
             </div>

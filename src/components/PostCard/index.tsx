@@ -1,16 +1,12 @@
-import React from "react";
-import { Link } from "gatsby";
+import React from 'react';
+import { Link } from 'gatsby';
 const PostCard = ({ posts }) => {
   return (
     <div className="container">
       {posts
-        .filter(post => post.node.frontmatter.templateKey === "article-page")
+        .filter(post => post.node.frontmatter.templateKey === 'article-page')
         .map(({ node: post }) => (
-          <div
-            className="content"
-            style={{ border: "1px solid #eaecee", padding: "2em 4em" }}
-            key={post.id}
-          >
+          <div className="content" style={{ border: '1px solid #eaecee', padding: '2em 4em' }} key={post.id}>
             <p>
               <Link className="has-text-primary" to={post.fields.slug}>
                 {post.frontmatter.title}

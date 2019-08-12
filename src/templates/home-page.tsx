@@ -1,14 +1,14 @@
-import React from "react";
-import { graphql } from "gatsby";
-import HomePageTemplate from "../components/HomePageTemplate";
-import Layout from "../components/Layout";
-type HomePageProps = {
+import React from 'react';
+import { graphql } from 'gatsby';
+import HomePageTemplate from '../components/HomePageTemplate';
+import Layout from '../components/Layout';
+interface HomePageProps {
   data?: {
     markdownRemark?: {
-      frontmatter?: object
-    }
-  }
-};
+      frontmatter?: object;
+    };
+  };
+}
 const HomePage: React.SFC<HomePageProps> = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
   return (

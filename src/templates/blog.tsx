@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { Link } from "gatsby";
-import config from "../../config";
-import Helmet from "react-helmet";
-import PostCard from "../components/PostCard";
-import Layout from "../components/Layout";
+import React, { Component } from 'react';
+import { Link } from 'gatsby';
+import config from '../../config';
+import Helmet from 'react-helmet';
+import PostCard from '../components/PostCard';
+import Layout from '../components/Layout';
 const PaginationLink = props => {
   if (!props.test) {
     return (
@@ -23,23 +23,21 @@ export default class BlogPage extends Component<{}, {}> {
   render() {
     const { pageContext } = this.props;
     const { group, index, first, last } = pageContext;
-    const previousUrl = index - 1 === 1 ? "" : (index - 1).toString();
-    const nextUrl = (index + 1).toString() + "/";
+    const previousUrl = index - 1 === 1 ? '' : (index - 1).toString();
+    const nextUrl = (index + 1).toString() + '/';
     const websiteSchemaOrgJSONLD = {
-      "@context": "http://schema.org",
-      "@type": "WebSite",
+      '@context': 'http://schema.org',
+      '@type': 'WebSite',
       url: config.siteUrl,
       name: config.siteTitle,
-      alternateName: config.siteTitleAlt ? config.siteTitleAlt : ""
+      alternateName: config.siteTitleAlt ? config.siteTitleAlt : '',
     };
     return (
       <Layout>
         <Helmet>
           <title>Blog | Gatsby Starter Business</title>
 
-          <script type="application/ld+json">
-            {JSON.stringify(websiteSchemaOrgJSONLD)}
-          </script>
+          <script type="application/ld+json">{JSON.stringify(websiteSchemaOrgJSONLD)}</script>
         </Helmet>
         <section className="hero is-primary is-bold">
           <div className="hero-body">
@@ -58,11 +56,7 @@ export default class BlogPage extends Component<{}, {}> {
           <PostCard posts={group} />
           <section className="section">
             <div className="buttons is-centered">
-              <PaginationLink
-                test={first}
-                url={previousUrl}
-                text="Previous Page"
-              />
+              <PaginationLink test={first} url={previousUrl} text="Previous Page" />
               <PaginationLink test={last} url={nextUrl} text="Next Page" />
             </div>
           </section>

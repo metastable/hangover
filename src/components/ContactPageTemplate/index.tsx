@@ -1,24 +1,21 @@
-import React, { Component } from "react";
-import { navigate } from "gatsby-link";
-import Helmet from "react-helmet";
+import React, { Component } from 'react';
+import { navigate } from 'gatsby-link';
+import Helmet from 'react-helmet';
 const encode = data => {
   return Object.keys(data)
-    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&");
+    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&');
 };
-type ContactPageTemplateProps = {
-  title?: string,
-  subtitle?: string,
-  meta_title?: string,
-  meta_description?: string
-};
-type ContactPageTemplateState = {
-  isValidated: boolean
-};
-class ContactPageTemplate extends Component<
-  ContactPageTemplateProps,
-  ContactPageTemplateState
-> {
+interface ContactPageTemplateProps {
+  title?: string;
+  subtitle?: string;
+  meta_title?: string;
+  meta_description?: string;
+}
+interface ContactPageTemplateState {
+  isValidated: boolean;
+}
+class ContactPageTemplate extends Component<ContactPageTemplateProps, ContactPageTemplateState> {
   constructor(props) {
     super(props);
     this.state = { isValidated: false };
@@ -30,15 +27,15 @@ class ContactPageTemplate extends Component<
     e.preventDefault();
     const form = e.target;
     // eslint-disable-next-line
-    fetch("/?no-cache=1", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    fetch('/?no-cache=1', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
-        "form-name": form.getAttribute("name"),
-        ...this.state
-      })
+        'form-name': form.getAttribute('name'),
+        ...this.state,
+      }),
     })
-      .then(() => navigate(form.getAttribute("action")))
+      .then(() => navigate(form.getAttribute('action')))
       .catch(error => alert(error));
   };
   render() {
@@ -77,8 +74,7 @@ class ContactPageTemplate extends Component<
               <input type="hidden" name="form-name" value="contact" />
               <div hidden>
                 <label>
-                  Don’t fill this out:{" "}
-                  <input name="bot-field" onChange={this.handleChange} />
+                  Don’t fill this out: <input name="bot-field" onChange={this.handleChange} />
                 </label>
               </div>
               <div className="field">
@@ -133,11 +129,7 @@ class ContactPageTemplate extends Component<
                   <button
                     className="button is-primary"
                     type="submit"
-                    disabled={
-                      !this.state.name ||
-                      !this.state.email ||
-                      !this.state.message
-                    }
+                    disabled={!this.state.name || !this.state.email || !this.state.message}
                   >
                     Submit
                   </button>

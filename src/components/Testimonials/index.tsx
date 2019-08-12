@@ -1,10 +1,10 @@
-import React from "react";
-type TestimonialsProps = {
+import React from 'react';
+interface TestimonialsProps {
   testimonials?: {
-    quote?: string,
-    author?: string
-  }[]
-};
+    quote?: string;
+    author?: string;
+  }[];
+}
 const Testimonials: React.SFC<TestimonialsProps> = ({ testimonials }) => (
   <div>
     {testimonials.map((testimonial, id) => (

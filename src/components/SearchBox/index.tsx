@@ -1,23 +1,23 @@
-import React, { Component } from "react";
-import { Link } from "gatsby";
-import { Index } from "elasticlunr";
-type SearchBoxState = {
-  query: string,
-  results: undefined[],
-  isActive: boolean
-};
+import React, { Component } from 'react';
+import { Link } from 'gatsby';
+import { Index } from 'elasticlunr';
+interface SearchBoxState {
+  query: string;
+  results: undefined[];
+  isActive: boolean;
+}
 export default class SearchBox extends Component<{}, SearchBoxState> {
   constructor(props) {
     super(props);
     this.state = {
       query: ``,
       results: [],
-      isActive: false
+      isActive: false,
     };
   }
   render() {
     return (
-      <div className={`navbar-item ${this.state.isActive ? "is-active" : ""}`}>
+      <div className={`navbar-item ${this.state.isActive ? 'is-active' : ''}`}>
         <input
           className="input navbar-link is-rounded is-primary"
           type="text"
@@ -35,8 +35,7 @@ export default class SearchBox extends Component<{}, SearchBoxState> {
       </div>
     );
   }
-  getOrCreateIndex = () =>
-    this.index ? this.index : Index.load(this.props.searchIndex);
+  getOrCreateIndex = () => (this.index ? this.index : Index.load(this.props.searchIndex));
   search = evt => {
     const query = evt.target.value;
     this.index = this.getOrCreateIndex();
@@ -46,7 +45,7 @@ export default class SearchBox extends Component<{}, SearchBoxState> {
       results: this.index
         .search(query, { expand: true }) // Accept partial matches
         .map(({ ref }) => this.index.documentStore.getDoc(ref)),
-      isActive: !!query
+      isActive: !!query,
     });
   };
 }

@@ -1,14 +1,14 @@
-import React from "react";
-import { graphql } from "gatsby";
-import ContactPageTemplate from "../components/ContactPageTemplate";
-import Layout from "../components/Layout";
-type ContactPageProps = {
+import React from 'react';
+import { graphql } from 'gatsby';
+import ContactPageTemplate from '../components/ContactPageTemplate';
+import Layout from '../components/Layout';
+interface ContactPageProps {
   data?: {
     markdownRemark?: {
-      frontmatter?: object
-    }
-  }
-};
+      frontmatter?: object;
+    };
+  };
+}
 const ContactPage: React.SFC<ContactPageProps> = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
   return (

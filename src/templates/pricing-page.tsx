@@ -1,14 +1,14 @@
-import React from "react";
-import { graphql } from "gatsby";
-import PricingPageTemplate from "../components/PricingPageTemplate";
-import Layout from "../components/Layout";
-type PricingPageProps = {
+import React from 'react';
+import { graphql } from 'gatsby';
+import PricingPageTemplate from '../components/PricingPageTemplate';
+import Layout from '../components/Layout';
+interface PricingPageProps {
   data?: {
     markdownRemark?: {
-      frontmatter?: object
-    }
-  }
-};
+      frontmatter?: object;
+    };
+  };
+}
 const PricingPage: React.SFC<PricingPageProps> = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
   return (

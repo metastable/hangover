@@ -1,16 +1,16 @@
-import React from "react";
-import { graphql } from "gatsby";
-import { HTMLContent } from "../components/Content";
-import ArticleTemplate from "../components/ArticleTemplate";
-import SE0 from "../components/SEO";
-import Share from "../components/Share";
-import Disqus from "../components/Disqus";
-import Layout from "../components/Layout";
-type ArticlePageProps = {
+import React from 'react';
+import { graphql } from 'gatsby';
+import { HTMLContent } from '../components/Content';
+import ArticleTemplate from '../components/ArticleTemplate';
+import SE0 from '../components/SEO';
+import Share from '../components/Share';
+import Disqus from '../components/Disqus';
+import Layout from '../components/Layout';
+interface ArticlePageProps {
   data?: {
-    markdownRemark?: object
-  }
-};
+    markdownRemark?: object;
+  };
+}
 const ArticlePage: React.SFC<ArticlePageProps> = ({ data }) => {
   const { markdownRemark: post } = data;
   return (

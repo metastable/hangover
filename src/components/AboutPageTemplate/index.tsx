@@ -1,15 +1,11 @@
-import React from "react";
-import Content from "../Content";
-type AboutPageTemplateProps = {
-  title: string,
-  content?: string,
-  contentComponent?: (...args: any[]) => any
-};
-const AboutPageTemplate: React.SFC<AboutPageTemplateProps> = ({
-  title,
-  content,
-  contentComponent
-}) => {
+import React from 'react';
+import Content from '../Content';
+interface AboutPageTemplateProps {
+  title: string;
+  content?: string;
+  contentComponent?: (...args: any[]) => any;
+}
+const AboutPageTemplate: React.SFC<AboutPageTemplateProps> = ({ title, content, contentComponent }) => {
   const PageContent = contentComponent || Content;
   return (
     <div>

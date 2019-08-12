@@ -1,22 +1,17 @@
-import React from "react";
-import Helmet from "react-helmet";
-import Pricing from "../Pricing";
-type PricingPageTemplateProps = {
-  title?: string,
-  meta_title?: string,
-  meta_description?: string,
+import React from 'react';
+import Helmet from 'react-helmet';
+import Pricing from '../Pricing';
+interface PricingPageTemplateProps {
+  title?: string;
+  meta_title?: string;
+  meta_description?: string;
   pricing?: {
-    heading?: string,
-    description?: string,
-    plans?: any[]
-  }
-};
-const PricingPageTemplate: React.SFC<PricingPageTemplateProps> = ({
-  title,
-  meta_title,
-  meta_description,
-  pricing
-}) => (
+    heading?: string;
+    description?: string;
+    plans?: any[];
+  };
+}
+const PricingPageTemplate: React.SFC<PricingPageTemplateProps> = ({ title, meta_title, meta_description, pricing }) => (
   <div>
     <Helmet>
       <title>{meta_title}</title>
@@ -41,9 +36,7 @@ const PricingPageTemplate: React.SFC<PricingPageTemplateProps> = ({
           <div className="columns">
             <div className="column is-10 is-offset-1">
               <div className="content">
-                <h2 className="has-text-weight-semibold is-size-2">
-                  {pricing.heading}
-                </h2>
+                <h2 className="has-text-weight-semibold is-size-2">{pricing.heading}</h2>
                 <p className="is-size-5">{pricing.description}</p>
                 <Pricing data={pricing.plans} />
               </div>
