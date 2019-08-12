@@ -5,7 +5,7 @@ interface TestimonialsProps {
     author?: string;
   }[];
 }
-const Testimonials: React.SFC<TestimonialsProps> = ({ testimonials }) => (
+const Testimonials: React.FunctionComponent<TestimonialsProps> = ({ testimonials }) => (
   <div>
     {testimonials.map((testimonial, id) => (
       <article className="message" key={id}>

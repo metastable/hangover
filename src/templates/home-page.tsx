@@ -5,11 +5,11 @@ import Layout from '../components/Layout';
 interface HomePageProps {
   data?: {
     markdownRemark?: {
-      frontmatter?: object;
+      frontmatter?: any;
     };
   };
 }
-const HomePage: React.SFC<HomePageProps> = ({ data }) => {
+const HomePage: React.FunctionComponent<HomePageProps> = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
   return (
     <Layout>

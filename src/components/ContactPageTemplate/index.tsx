@@ -16,11 +16,10 @@ interface ContactPageTemplateState {
   isValidated: boolean;
 }
 class ContactPageTemplate extends Component<ContactPageTemplateProps, ContactPageTemplateState> {
-  constructor(props) {
-    super(props);
-    this.state = { isValidated: false };
-  }
+  state = { isValidated: false };
+
   handleChange = e => {
+    // @ts-ignore
     this.setState({ [e.target.name]: e.target.value });
   };
   handleSubmit = e => {
@@ -113,7 +112,7 @@ class ContactPageTemplate extends Component<ContactPageTemplateProps, ContactPag
                     placeholder="Message"
                     name="message"
                     id="message"
-                    rows="6"
+                    rows={6}
                     onChange={this.handleChange}
                   />
                 </div>
@@ -129,7 +128,7 @@ class ContactPageTemplate extends Component<ContactPageTemplateProps, ContactPag
                   <button
                     className="button is-primary"
                     type="submit"
-                    disabled={!this.state.name || !this.state.email || !this.state.message}
+                    disabled={!this.state['name'] || !this.state['email'] || !this.state['message']}
                   >
                     Submit
                   </button>

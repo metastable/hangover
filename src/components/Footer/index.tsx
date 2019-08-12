@@ -1,6 +1,6 @@
 import React from 'react';
 import config from '../../../config';
-const Footer = () => {
+const Footer: React.FunctionComponent<{}> = () => {
   return (
     <footer className="footer">
       <div className="container">

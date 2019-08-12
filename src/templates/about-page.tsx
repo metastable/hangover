@@ -5,9 +5,18 @@ import { HTMLContent } from '../components/Content';
 import AboutPageTemplate from '../components/AboutPageTemplate';
 import Layout from '../components/Layout';
 interface AboutPageProps {
-  data: object;
+  data: {
+    markdownRemark: {
+      html: any;
+      frontmatter: {
+        title?: string;
+        meta_title?: string;
+        meta_description?: string;
+      };
+    };
+  };
 }
-const AboutPage: React.SFC<AboutPageProps> = ({ data }) => {
+const AboutPage: React.FunctionComponent<AboutPageProps> = ({ data }) => {
   const { markdownRemark: post } = data;
   return (
     <Layout>

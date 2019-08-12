@@ -5,7 +5,7 @@ interface AboutPageTemplateProps {
   content?: string;
   contentComponent?: (...args: any[]) => any;
 }
-const AboutPageTemplate: React.SFC<AboutPageTemplateProps> = ({ title, content, contentComponent }) => {
+const AboutPageTemplate: React.FunctionComponent<AboutPageTemplateProps> = ({ title, content, contentComponent }) => {
   const PageContent = contentComponent || Content;
   return (
     <div>

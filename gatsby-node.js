@@ -1,12 +1,13 @@
-const _ = require('lodash')
+//const _ = require('lodash');
 const changeCase = require('change-case');
-const path = require('path')
-const { createFilePath } = require('gatsby-source-filesystem')
-const createPaginatedPages = require('gatsby-paginate')
-const { fmImagesToRelative } = require('gatsby-remark-relative-images')
+const isMatch = require('lodash.ismatch');
+const path = require('path');
+const { createFilePath } = require('gatsby-source-filesystem');
+const createPaginatedPages = require('gatsby-paginate');
+const { fmImagesToRelative } = require('gatsby-remark-relative-images');
 
 exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
 
   return graphql(`
     {
@@ -31,20 +32,20 @@ exports.createPages = ({ actions, graphql }) => {
     }
   `).then(result => {
     if (result.errors) {
-      result.errors.forEach(e => console.error(e.toString()))
-      return Promise.reject(result.errors)
+      result.errors.forEach(e => console.error(e.toString()));
+      return Promise.reject(result.errors);
     }
 
-    const postsAndPages = result.data.allMarkdownRemark.edges
+    const postsAndPages = result.data.allMarkdownRemark.edges;
 
     // Post pages:
-    let posts = []
+    let posts = [];
     // Iterate through each post/page, putting all found posts (where templateKey = article-page) into `posts`
     postsAndPages.forEach(edge => {
-      if (_.isMatch(edge.node.frontmatter, {'templateKey': 'article-page'})) {
-        posts = posts.concat(edge)
+      if (isMatch(edge.node.frontmatter, { templateKey: 'article-page' })) {
+        posts = posts.concat(edge);
       }
-    })
+    });
 
     createPaginatedPages({
       edges: posts,
@@ -53,32 +54,30 @@ exports.createPages = ({ actions, graphql }) => {
       pageLength: 6, // This is optional and defaults to 10 if not used
       pathPrefix: 'blog', // This is optional and defaults to an empty string if not used
       context: {}, // This is optional and defaults to an empty object if not used
-    })
+    });
     postsAndPages.forEach(edge => {
-      const id = edge.node.id
+      const id = edge.node.id;
       createPage({
         path: edge.node.fields.slug,
         tags: edge.node.frontmatter.tags,
-        component: path.resolve(
-          `src/templates/${String(edge.node.frontmatter.templateKey)}.tsx`
-        ),
+        component: path.resolve(`src/templates/${String(edge.node.frontmatter.templateKey)}.tsx`),
         // additional data can be passed via context
         context: {
           id,
         },
-      })
+      });
     });
 
     // lodash's get function sim
-    const get = (obj, path, defaultValue) => path.split(".")
-      .reduce((a, c) => (a && a[c] ? a[c] : (defaultValue || null)), obj);
+    const get = (obj, path, defaultValue) =>
+      path.split('.').reduce((a, c) => (a && a[c] ? a[c] : defaultValue || null), obj);
 
     // Tag pages:
     let tags = [];
     // Iterate through each post, putting all found tags into `tags`
     postsAndPages.forEach(edge => {
       if (get(edge, `node.frontmatter.tags`)) {
-        tags = tags.concat(edge.node.frontmatter.tags)
+        tags = tags.concat(edge.node.frontmatter.tags);
       }
     });
     // Eliminate duplicate tags
@@ -94,21 +93,21 @@ exports.createPages = ({ actions, graphql }) => {
         context: {
           tag,
         },
-      })
-    })
-  })
+      });
+    });
+  });
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
-  fmImagesToRelative(node) // convert image paths for gatsby images
+  const { createNodeField } = actions;
+  fmImagesToRelative(node); // convert image paths for gatsby images
 
   if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({node, getNode});
+    const value = createFilePath({ node, getNode });
     createNodeField({
       name: `slug`,
       node,
       value,
-    })
+    });
   }
 };

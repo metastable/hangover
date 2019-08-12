@@ -4,7 +4,12 @@ import config from '../../config';
 import Helmet from 'react-helmet';
 import PostCard from '../components/PostCard';
 import Layout from '../components/Layout';
-const PaginationLink = props => {
+interface PaginationLinkProps {
+  test: boolean;
+  url: string;
+  text: string;
+}
+const PaginationLink: React.FunctionComponent<PaginationLinkProps> = props => {
   if (!props.test) {
     return (
       <Link to={`/blog/${props.url}`} className="button is-rounded">
@@ -13,13 +18,18 @@ const PaginationLink = props => {
     );
   } else {
     return (
-      <span disabled className="button is-rounded">
+      <span className="button is-rounded" aria-disabled={true}>
         {props.text}
       </span>
     );
   }
 };
-export default class BlogPage extends Component<{}, {}> {
+
+interface BlogPageProps {
+  pageContext: any;
+}
+
+export default class BlogPage extends Component<BlogPageProps, {}> {
   render() {
     const { pageContext } = this.props;
     const { group, index, first, last } = pageContext;

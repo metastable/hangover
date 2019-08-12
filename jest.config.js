@@ -4,30 +4,24 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   testRegex: TEST_REGEX,
   transform: {
-    "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
+    '^.+\\.(js|jsx|ts|tsx)$': '<rootDir>/node_modules/babel-jest',
   },
   moduleNameMapper: {
-    ".+\\.(css|styl|less|sass|scss)$": `identity-obj-proxy`
+    '.+\\.(css|styl|less|sass|scss)$': `identity-obj-proxy`,
   },
-  testEnvironment: "jsdom",
+  testEnvironment: 'jsdom',
   testPathIgnorePatterns: ['<rootDir>/.cache/', '<rootDir>/node_modules/'],
   transformIgnorePatterns: [`node_modules/(?!(gatsby)/)`],
-  moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   collectCoverage: true,
-  coverageReporters: [
-    "lcov",
-    "text",
-    "html"
-  ],
+  coverageReporters: ['lcov', 'text', 'html'],
   globals: {
     __PATH_PREFIX__: ``,
   },
-  resolver: "jest-pnp-resolver",
+  resolver: 'jest-pnp-resolver',
   watchPlugins: [
-    "<rootDir>/node_modules/jest-watch-typeahead/filename.js",
-    "<rootDir>/node_modules/jest-watch-typeahead/testname.js"
+    '<rootDir>/node_modules/jest-watch-typeahead/filename.js',
+    '<rootDir>/node_modules/jest-watch-typeahead/testname.js',
   ],
-  snapshotSerializers: [
-    "enzyme-to-json/serializer"
-  ]
+  snapshotSerializers: ['enzyme-to-json/serializer'],
 };

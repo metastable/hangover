@@ -1,14 +1,16 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, ReactNode } from 'react';
 import Helmet from 'react-helmet';
 import '../../assets/scss/styles.scss';
 import config from '../../../config';
 import NavBar from '../NavBar';
 import Footer from '../Footer';
+interface LayoutProps {
+  children: ReactNode;
+}
 interface LayoutState {
   isActive: boolean;
-  isActive: boolean;
 }
-class Layout extends Component<{}, LayoutState> {
+class Layout extends Component<LayoutProps, LayoutState> {
   constructor(props) {
     super(props);
     this.state = { isActive: false };

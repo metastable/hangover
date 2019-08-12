@@ -7,7 +7,7 @@ interface PricingProps {
     items?: any[];
   }[];
 }
-const Pricing: React.SFC<PricingProps> = ({ data }) => (
+const Pricing: React.FunctionComponent<PricingProps> = ({ data }) => (
   <div className="columns">
     {data.map(price => (
       <div key={price.plan} className="column" style={{ border: '1px solid #eaecee' }}>

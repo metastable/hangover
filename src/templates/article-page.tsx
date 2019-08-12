@@ -2,21 +2,33 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { HTMLContent } from '../components/Content';
 import ArticleTemplate from '../components/ArticleTemplate';
-import SE0 from '../components/SEO';
+import SEO from '../components/SEO';
 import Share from '../components/Share';
-import Disqus from '../components/Disqus';
 import Layout from '../components/Layout';
 interface ArticlePageProps {
   data?: {
-    markdownRemark?: object;
+    markdownRemark?: {
+      frontmatter: {
+        title: string;
+        meta_title: string;
+        meta_description: string;
+        cover: string;
+        date: string;
+        tags: string[];
+      };
+      fields: {
+        slug: string;
+      };
+      html: string;
+    };
   };
 }
-const ArticlePage: React.SFC<ArticlePageProps> = ({ data }) => {
+const ArticlePage: React.FunctionComponent<ArticlePageProps> = ({ data }) => {
   const { markdownRemark: post } = data;
   return (
     <Layout>
       <section className="section">
-        <SE0
+        <SEO
           title={post.frontmatter.title}
           meta_title={post.frontmatter.meta_title}
           meta_desc={post.frontmatter.meta_description}
@@ -32,7 +44,7 @@ const ArticlePage: React.SFC<ArticlePageProps> = ({ data }) => {
                 contentComponent={HTMLContent}
                 cover={post.frontmatter.cover}
                 meta_title={post.frontmatter.meta_title}
-                meta_desc={post.frontmatter.meta_description}
+                meta_description={post.frontmatter.meta_description}
                 tags={post.frontmatter.tags}
                 title={post.frontmatter.title}
               />
@@ -41,8 +53,6 @@ const ArticlePage: React.SFC<ArticlePageProps> = ({ data }) => {
                 slug={post.fields.slug}
                 excerpt={post.frontmatter.meta_description}
               />
-              <hr />
-              <Disqus title={post.frontmatter.title} slug={post.fields.slug} />
             </div>
           </div>
         </div>
@@ -60,7 +70,7 @@ export const pageQuery = graphql`
         slug
       }
       frontmatter {
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "YYYY-MM-DD")
         title
         cover
         meta_title

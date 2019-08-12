@@ -5,11 +5,11 @@ import Layout from '../components/Layout';
 interface ContactPageProps {
   data?: {
     markdownRemark?: {
-      frontmatter?: object;
+      frontmatter?: any;
     };
   };
 }
-const ContactPage: React.SFC<ContactPageProps> = ({ data }) => {
+const ContactPage: React.FunctionComponent<ContactPageProps> = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
   return (
     <Layout>

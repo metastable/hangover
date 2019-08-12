@@ -11,7 +11,12 @@ interface PricingPageTemplateProps {
     plans?: any[];
   };
 }
-const PricingPageTemplate: React.SFC<PricingPageTemplateProps> = ({ title, meta_title, meta_description, pricing }) => (
+const PricingPageTemplate: React.FunctionComponent<PricingPageTemplateProps> = ({
+  title,
+  meta_title,
+  meta_description,
+  pricing,
+}) => (
   <div>
     <Helmet>
       <title>{meta_title}</title>

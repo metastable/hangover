@@ -2,6 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import Offerings from '../Offerings';
 import Testimonials from '../Testimonials';
+
 interface HomePageTemplateProps {
   title?: string;
   meta_title?: string;
@@ -13,7 +14,7 @@ interface HomePageTemplateProps {
   };
   testimonials?: any[];
 }
-const HomePageTemplate: React.SFC<HomePageTemplateProps> = ({
+const HomePageTemplate: React.FunctionComponent<HomePageTemplateProps> = ({
   title,
   heading,
   description,
@@ -50,6 +51,7 @@ const HomePageTemplate: React.SFC<HomePageTemplateProps> = ({
                   <h3 className="has-text-weight-semibold is-size-2">{heading}</h3>
                   <p>{description}</p>
                 </div>
+
                 <Offerings gridItems={offerings.blurbs} />
                 <h2 className="has-text-weight-semibold is-size-2">Testimonials</h2>
                 <Testimonials testimonials={testimonials} />

@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'gatsby';
-const PostCard = ({ posts }) => {
+interface PostCardProps {
+  posts: any;
+}
+const PostCard: React.FunctionComponent<PostCardProps> = ({ posts }) => {
   return (
     <div className="container">
       {posts

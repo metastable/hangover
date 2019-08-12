@@ -72,7 +72,10 @@ yarn-error.log
 .idea/
 
 #
-coverage
+lambda
+storybook-static/
+
+
 
 
 

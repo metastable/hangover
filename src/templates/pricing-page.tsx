@@ -5,11 +5,11 @@ import Layout from '../components/Layout';
 interface PricingPageProps {
   data?: {
     markdownRemark?: {
-      frontmatter?: object;
+      frontmatter?: any;
     };
   };
 }
-const PricingPage: React.SFC<PricingPageProps> = ({ data }) => {
+const PricingPage: React.FunctionComponent<PricingPageProps> = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
   return (
     <Layout>
