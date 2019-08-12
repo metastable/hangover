@@ -16,7 +16,8 @@
   "env": {
     "browser": true,
     "node": true,
-    "es6": true
+    "es6": true,
+    "jest": true
   },
   "plugins": [
     "graphql",
@@ -49,7 +50,7 @@
         "trailingComma": "es5"
       }
     ],
-     "@typescript-eslint/camelcase": ["warn", { "properties": "always" }],
+    "@typescript-eslint/camelcase": ["warn", { "properties": "always" }],
     "@typescript-eslint/interface-name-prefix": "off",
     "@typescript-eslint/explicit-member-accessibility": ["error",{ "accessibility": "no-public" }],
     "no-unused-vars": "off",
