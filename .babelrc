@@ -1,0 +1,17 @@
+{
+  "presets": [
+    "babel-preset-gatsby",
+    "@babel/preset-typescript",
+    "@lingui/babel-preset-react"
+  ],
+  "plugins": [
+    "@lingui/babel-plugin-transform-js",
+    "@lingui/babel-plugin-transform-react",
+    ["@babel/proposal-decorators", {"legacy": true}],
+    ["@babel/proposal-class-properties", {"loose": true}],
+    "@babel/proposal-object-rest-spread",
+    "babel-plugin-macros"
+  ]
+}
+
+

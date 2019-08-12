@@ -1,0 +1,16 @@
+{
+    "compileNamespace": "es",
+    "extractBabelOptions": {},
+    "fallbackLocale": "en",
+    "sourceLocale": "en",
+    "localeDir": "<rootDir>/src/locale",
+    "srcPathDirs": [
+      "<rootDir>/src/pages/",
+      "<rootDir>/src/components/",
+      "<rootDir>/src/templates/"
+    ],
+    "srcPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "format": "po"
+}
